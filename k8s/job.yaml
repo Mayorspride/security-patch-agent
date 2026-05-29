@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: security-patch-agent
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: agent
+          image: ghcr.io/mayorspride/security-patch-agent:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: security-patch-agent-config
+          command: ["/bin/sh", "-c"]
+          args:
+            - security-patch-agent --repo "$REPO_PATH" --branch "$BRANCH_NAME"
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop: ["ALL"]
+      volumes:
+        - name: workspace
+          emptyDir: {}

@@ -1,0 +1,12 @@
+[1/5] Inspecting repository
+[2/5] Detecting vulnerabilities and risky patterns
+  - CONFIRMED HIGH: DEP-FLASK-BELOW-2.2.5 in requirements.txt:1
+  - CONFIRMED MEDIUM: DEP-REQUESTS-BELOW-2.32.4 in requirements.txt:2
+  - CONFIRMED MEDIUM: PY-INSECURE-MD5 in app.py:4
+[3/5] Creating reviewable patch plan
+  - PLAN Upgrade flask to safe floor 2.2.5: flask==2.0.0 -> flask==2.2.5
+  - PLAN Upgrade requests to safe floor 2.32.4: requests==2.31.0 -> requests==2.32.4
+  - PLAN Replace hashlib.md5 with hashlib.sha256: hashlib.md5( -> hashlib.sha256(
+[4/5] Applying safe, small patch
+[5/5] Verifying patch result
+Report written to /mnt/data/security-patch-agent/evidence/demo-run-report.md

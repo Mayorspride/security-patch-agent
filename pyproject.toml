@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "security-patch-agent"
+version = "0.1.0"
+description = "Prototype agent that detects and safely patches security issues in GitHub repositories."
+requires-python = ">=3.10"
+dependencies = ["GitPython==3.1.43", "PyYAML==6.0.2", "packaging==24.2"]
+
+[project.scripts]
+security-patch-agent = "security_patch_agent.agent:main"
+
+[tool.setuptools.packages.find]
+include = ["security_patch_agent*"]
+exclude = ["tests*", "k8s*", "evidence*", "scripts*"]

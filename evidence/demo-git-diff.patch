@@ -1,0 +1,19 @@
+diff --git a/app.py b/app.py
+index a72e127..85261e0 100644
+--- a/app.py
++++ b/app.py
+@@ -1,4 +1,4 @@
+ import hashlib
+ 
+ def fingerprint(value: str) -> str:
+-    return hashlib.md5(value.encode()).hexdigest()
++    return hashlib.sha256(value.encode()).hexdigest()
+diff --git a/requirements.txt b/requirements.txt
+index 255b01e..4ad50cb 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1,2 @@
+-flask==2.0.0
+-requests==2.31.0
++flask==2.2.5
++requests==2.32.4

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: security-patch-agent-config
+data:
+  REPO_PATH: /workspace/repo
+  BRANCH_NAME: security-patch-agent/fixes
